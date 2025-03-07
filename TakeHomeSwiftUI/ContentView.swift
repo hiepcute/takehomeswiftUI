@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
+            Color.pink.opacity(0.5)
+                .ignoresSafeArea()
             VStack {
                 headerView
                 Spacer()
