@@ -55,11 +55,10 @@
 		FAA22D6D2D606CC200C0189D /* TakeHomeSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				FAA22D6E2D606CC200C0189D /* TakeHomeSwiftUIApp.swift */,
-				FAA22D702D606CC200C0189D /* ContentView.swift */,
+				FAB5FC192D7AE53300C2E40A /* View */,
+				FAB5FC152D79F4A400C2E40A /* ProfileView.swift */,
 				FAA22D722D606CC500C0189D /* Assets.xcassets */,
 				FAA22D742D606CC500C0189D /* Preview Content */,
-				FAB5FC152D79F4A400C2E40A /* ProfileView.swift */,
 				FAB5FC172D79F7DB00C2E40A /* test.swift */,
 			);
 			path = TakeHomeSwiftUI;
@@ -71,6 +70,15 @@
 				FAA22D752D606CC500C0189D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FAB5FC192D7AE53300C2E40A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA22D702D606CC200C0189D /* ContentView.swift */,
+				FAA22D6E2D606CC200C0189D /* TakeHomeSwiftUIApp.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

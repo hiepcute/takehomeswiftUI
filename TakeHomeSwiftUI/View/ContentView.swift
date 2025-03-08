@@ -10,11 +10,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color.pink.opacity(0.5)
+            Color.white
                 .ignoresSafeArea()
             VStack {
                 headerView
                 Spacer()
+                ScrollView {
+                    VStack {
+                        ForEach(0..<20) { id in
+                            ProfileView1(imageProfile: "person.fill", userName: "Hiep", subtitle: "dep trai")
+                        }
+                    }
+                }
+                
             }
         }
     }

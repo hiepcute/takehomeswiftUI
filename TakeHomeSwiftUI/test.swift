@@ -1,59 +1,52 @@
 import SwiftUI
 
-struct GitHubUserView: View {
+struct ProfileView1: View {
+    @State var imageProfile: String
+    @State var userName: String
+    @State var subtitle: String
+    
     var body: some View {
-        VStack {
-            Text("Github user")
-                .font(.headline)
-                .padding(.bottom, 5)
+        HStack(spacing: 10) {
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(lineWidth: 0.8)
+                .frame(width: 100, height: 100)
+                .overlay(
+                    Circle()
+                        .stroke(lineWidth: 0.8)
+                        .padding(5)
+                        .overlay(
+                            Image(systemName: imageProfile)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                        )
+                )
+                .padding(.leading, 15)
             
-            // Hình chữ nhật bo góc bao quanh
+            VStack(alignment: .leading) {
+                Text(userName)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .padding(.top, 10)
+                Divider()
+                Link("https://www.linkedin.com/", destination: URL(string: "https://www.linkedin.com/")!)
+                    .font(.subheadline)
+                    .foregroundColor(.blue)
+                Spacer()
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: 120)
+        .padding(.vertical, 10)
+        .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
-                .frame(width: 300, height: 120)
                 .shadow(radius: 5)
-                .overlay(
-                    HStack(spacing: 15) {
-                        // Hình vuông chứa hình tròn
-                        ZStack {
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.2))
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(15)
-                            
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 70, height: 70)
-                                .overlay(
-                                    Image(systemName: "person.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 60)
-                                )
-                        }
-                        
-                        // Thông tin người dùng
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("jvantuyl")
-                                .font(.headline)
-                                .bold()
-                            
-                            Divider()
-                            
-                            Link("https://www.linkedin.com/", destination: URL(string: "https://www.linkedin.com/")!)
-                                .font(.subheadline)
-                                .foregroundColor(.blue)
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal, 15)
-                )
-        }
-        .padding()
+        )
+        .padding(.horizontal, 20)
+    
     }
 }
 
 #Preview {
-    GitHubUserView()
+    ProfileView1(imageProfile: "person.fill", userName: "abxc", subtitle: "")
 }
