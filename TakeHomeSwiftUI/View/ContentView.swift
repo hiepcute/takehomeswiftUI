@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = ListUserViewModel()
     var body: some View {
         ZStack {
             Color.white
@@ -15,18 +16,27 @@ struct ContentView: View {
             VStack {
                 headerView
                 Spacer()
-                ScrollView {
-                    VStack {
-                        ForEach(0..<20) { id in
-                            ProfileView1(imageProfile: "person.fill", userName: "Hiep", subtitle: "dep trai")
+                List(viewModel.users) { user in
+                    
+                    ProfileView(imageProfileURl: user.imageViewURL, userName: user.name, subtitle: "")
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.all, 10)
+                        .onTapGesture {
+                            
                         }
-                    }
                 }
-                
+                    
+                }
+                .listStyle(.plain)
+               
+            }
+            .task {
+                viewModel.fetchListUser(url: APIEndPoint.userInformation(perPage: 20, since: 100))
             }
         }
     }
-}
+
 
 #Preview {
     ContentView()
@@ -48,8 +58,6 @@ extension ContentView {
                 .frame(width: 50, height: 50)
                 .rotationEffect(Angle(degrees: 180))
             
-            
-           
         }
     }
 }
